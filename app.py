@@ -1,13 +1,20 @@
 # app.py
 
 import streamlit as st
-from tensorflow.keras.models import load_model
+import tensorflow as tf
 import numpy as np
 import cv2
 from PIL import Image
 
-# Load model
-model = load_model("mask_detector_model.h5")
+# Try to load the model; if the IDE/static checker still flags tensorflow imports,
+# it's an editor configuration issue (select the project's venv as VS Code interpreter).
+model = None
+try:
+    model = tf.keras.models.load_model("mask_detector_model.h5")
+except Exception as e:
+    # Defer error handling to runtime UI so Streamlit can start even if model absent
+    model = None
+    load_error = str(e)
 
 st.title("Face Mask Detector 😷")
 st.write("Upload an image, and the app will predict if the person is wearing a mask or not.")
