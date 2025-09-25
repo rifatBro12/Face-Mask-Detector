@@ -1,7 +1,17 @@
+setuptools>=61.0.0
+wheel
+pip>=23.1
+
+# App runtime
 streamlit==1.26.0
+
+# Use a TensorFlow version that has published wheels for your target Python version
 tensorflow==2.20.0
-numpy==1.24.0
-opencv-python-headless==4.8.0.76
-Pillow==10.0.0
-matplotlib==3.7.2
-scikit-learn==1.3.0
+
+# Use a modern numpy wheel that supports recent Python versions
+numpy==1.26.4
+
+pillow==9.5.0
+opencv-python==4.8.0.76
+scikit-learn==1.2.2
+matplotlib==3.7.1
